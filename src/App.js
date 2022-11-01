@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home, Interested, ManageYourPresale, OpenPresale } from "./containers";
+import { PrimaryLayout } from "./layouts/Layout";
+import { ROUTES } from "./utils/constant";
+// import "./styles/resetCSS.css";
+import "./index.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <PrimaryLayout>
+        <Routes>
+          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.INTERESTED} element={<Interested />} />
+          <Route
+            path={ROUTES.MANAGE_YOUR_PRESALE}
+            element={<ManageYourPresale />}
+          />
+          <Route path={ROUTES.OPEN_PRESALE} element={<OpenPresale />} />
+        </Routes>
+      </PrimaryLayout>
+    </BrowserRouter>
   );
 }
 
